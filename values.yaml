@@ -1,0 +1,20 @@
+# Default values for chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Deployments
+deployment:
+  namespace: 
+  app:  api
+  image: $REGISTRY/$BASE_IMG
+  version: latest
+  replicas: 1
+
+service:
+  port: 8082
+
+
+env:
+  CONNECTIONSTRING_PGCONNECTION: 91.185.86.230
+  
+  
