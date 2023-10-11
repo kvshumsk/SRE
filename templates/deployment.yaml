@@ -25,13 +25,13 @@ spec:
           httpGet:
             path: /healthz/live
             port: http
-          initialDelaySeconds: 2
-          periodSeconds: 5
+          initialDelaySeconds: 5
+          periodSeconds: 8
         readinessProbe:
           httpGet:
             path: /healthz/live
             port: http
-          initialDelaySeconds: 1
+          initialDelaySeconds: 2
           periodSeconds: 10
         resources:
           requests:
@@ -41,8 +41,11 @@ spec:
             memory: 128Mi
             cpu: 100m
         ports:
-        - containerPort: {{ .Values.service.port }}
+        - name: http
+          containerPort: {{ .Values.service.port }}
         env:
-        - name: CONNECTIONSTRINGS_PGCONNECTION
-          value: "{{ .Values.env.CONNECTIONSTRINS_PGCONNECTION}}"
+        - name: CONNECTIONSTRINGS__PGCONNECTION
+          value: "server=91.185.86.230; port=5000; database=postgres; user id=postgres; password=postgres-pass"
+        - name: ASPNETCORE_URLS
+          value: http://*:8082
     

@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    meta.helm.sh/release-name: api-weather
+    meta.helm.sh/release-namespace: sre-cource-student-115
+  labels:
+    app.kubernetes.io/instance: api-weather
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: api-weather
+    helm.sh/chart: portainer-1.0.40
+  name: api-wether
+  namespace: sre-cource-student-115
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: weather.example
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Values.deployment.app }}
+            port:
+              number: 8082
+        path: /
+        pathType: Prefix

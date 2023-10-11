@@ -5,7 +5,7 @@
 # Deployments
 deployment:
   namespace: 
-  app:  api
+  app:  api-wether
   image: $REGISTRY/$BASE_IMG
   version: latest
   replicas: 1
@@ -14,7 +14,8 @@ service:
   port: 8082
 
 
-env:
-  CONNECTIONSTRING_PGCONNECTION: 91.185.86.230
+#env:
+#  CONNECTIONSTRING__PGCONNECTION: server=91.185.86.230; port=5000; database=postgres; user_id=postgres; password=postgres-pass;
+
   
   
